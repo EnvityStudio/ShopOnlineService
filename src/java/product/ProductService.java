@@ -34,4 +34,18 @@ public class ProductService {
         String listString = GsonUtil.newInstance().gson().toJson(list);
         return listString;
     }
+    
+    @WebMethod(operationName = "filterprice")
+    public String filterPrice(@WebParam(name = "first_price") String firstPrice, @WebParam(name = "last_price") String lastPrice){
+        List<Product> list = DataBaseAccess.newInstance().filterPrice(firstPrice,lastPrice);
+        String listString = GsonUtil.newInstance().gson().toJson(list);
+        return listString;
+    }
+    
+     @WebMethod(operationName = "filterbrand")
+    public String filterbrand(@WebParam(name = "idbrand") int idbrand){
+        List<Product> list = DataBaseAccess.newInstance().filterBrand(idbrand);
+        String listString = GsonUtil.newInstance().gson().toJson(list);
+        return listString;
+    }
 }
